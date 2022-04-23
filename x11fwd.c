@@ -101,7 +101,7 @@ void setnonblocking(int fd)
 
 int main(int argc, char **argv)
 {
-	if (daemon(1, 0) < 0)
+	if (daemon(1, 1) < 0)
 		fatal("daemon");
 
 	epollfd = epoll_create(EVENT_SIZE);

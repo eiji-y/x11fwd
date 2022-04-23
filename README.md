@@ -7,4 +7,4 @@ Allow WSLG to be used from Windows X11 client such as SSH.
 	PS> ssh -Y host
 
 ## Note
-	No security check. Pay attention for port fowarding.
+No security check. Pay attention for port fowarding.
