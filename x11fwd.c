@@ -101,8 +101,24 @@ void setnonblocking(int fd)
 
 int main(int argc, char **argv)
 {
-	if (daemon(1, 1) < 0)
+#if	0
+	if (daemon(0, 1) < 0)
 		fatal("daemon");
+#else
+	switch (fork()) {
+	case -1:
+		fatal("fork");
+	case 0:
+		break;
+	default:
+		// sleep for prevent wsl termination
+		sleep(1);
+		_exit(0);
+	}
+	if (setsid() == -1)
+		fatal("setsid");
+	int _ret_ = chdir("/");
+#endif
 
 	epollfd = epoll_create(EVENT_SIZE);
 	if (epollfd < 0)
