@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 		break;
 	default:
 		// sleep for prevent wsl termination
-		sleep(1);
+		usleep(1000);
 		_exit(0);
 	}
 	if (setsid() == -1)
